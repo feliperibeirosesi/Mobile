@@ -23,13 +23,11 @@ export default function App() {
   // Retorna a estrutura da interface do aplicativo
   return (
     <View style={styles.container}>
-      {" "}
       {/* Container principal com estilo aplicado */}
       <Text>Habos babosh</Text> {/* Texto simples exibido na tela */}
       <Third>
-        {" "}
         {/* Componente personalizado que aceita elementos filhos */}
-        <Text>Esse é um elemento filho do Third</Text>{" "}
+        <Text>Esse é um elemento filho do Third</Text>
         {/* Filho dentro do componente Third */}
       </Third>
       <StatusBar style="auto" /> {/* Barra de status com estilo automático */}
