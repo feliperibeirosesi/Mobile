@@ -8,7 +8,7 @@ export default function App() {
 
   //serve para retornar um array com dois valores
   const [nome, setNome] = useState("");
-  const [modalVisibility, setModalVisibility] = useState(false)
+  const [modalVisibility, setModalVisibility] = useState(false);
   return (
     <View style={styles.container}>
       <TextInput
