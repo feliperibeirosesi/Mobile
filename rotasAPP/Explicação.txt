@@ -1,0 +1,4 @@
+options={{ headerShown: false }}: retira o menu que fica em cima da pagina
+
+"navigation.goBack("Home")" goBack volta para a ultima acessada, não a quem vem antes,
+supondo que tenha 4 paginas eu sai da 1 e fui pra 4 quanto usar o goBack eu volto pro 1 e não pra 3
