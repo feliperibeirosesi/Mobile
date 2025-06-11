@@ -1,0 +1,18 @@
+
+ <FlatList
+        data={dados} : O data pega os dados que você criou em um array por exemplo;
+        keyExtractor={(item) => item.id} : ele vai renderizar a lista extraindo os ID de cada item;
+        renderItem={({ item }) => ( : escolhe como você quer renderizar, item texto etc.
+          <View style={[styles.box, { backgroundColor: item.color }]}>
+            <Text style={{ fontSize: 20 }}>{item.nome}</Text>
+          </View>
+        )}
+      />
+
+  <View style={styles.filter}>
+        <Text style={styles.text}>Mostrar Favoritos</Text>
+        <Switch value={favorites} onValueChange={() => setFavorite(!favorites)} cria um switch
+          thumbColor={favorites ? "green" : "red"} muda a cor da bolinha do switch
+          trackColor={{ false: "red", true: "green" }} /> muda a cor de fundo do switch
+
+      </View>
