@@ -5,14 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { styles } from "./SRC/JS/styles";
 
-// Importando páginas
-import Login from "./SRC/Pages/Login";
-
-function CadastroScreen({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-
+export default function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -128,15 +121,3 @@ function CadastroScreen({ navigation }) {
   );
 }
 
-const Stack = createNativeStackNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Cadastro" component={CadastroScreen} />
-        <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
