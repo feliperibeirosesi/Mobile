@@ -1,0 +1,27 @@
+Olá! Seja bem-vindo(a) ao meu app! 😊 Antes de avançar, tem algumas informações muito importantes que você precisa saber:
+
+⚠️ Instalação de dependências:
+Se você deu um git clone ou fez um fork, certifique-se de que todos os arquivos foram baixados corretamente.
+
+Caso tenha dúvidas, rode o comando:
+npm i
+
+Isso vai instalar todos os pacotes necessários.
+Como eu usei muitos pacotes para testes e funcionalidades avançadas, pode ser que você precise rodar esse comando mais de uma vez.
+
+🚧 Status do Cadastro:
+O sistema de cadastro ainda não está funcional!
+
+Sim, eu sei que é uma tela que parece levar para alguma funcionalidade, mas como ainda estou aprendendo React Native, estou com dificuldades para implementar o banco de dados.
+Pretendo resolver isso futuramente, provavelmente depois que eu voltar das férias.
+
+🧮 Calculadora de IMC:
+A Calculadora de IMC ainda não tem validação por Regex.
+
+Essa parte é mais simples, mas como também estou aprendendo, trabalhar com expressões regulares ainda é um desafio.
+Assim que possível, quero melhorar isso também.
+
+🫶 Por fim:
+Peço sua compreensão e paciência com qualquer problema ou falha que você encontrar, principalmente no layout (front-end), porque essa ainda é uma das minhas maiores dificuldades 😅.
+
+Muito obrigado por testar meu app! 🚀

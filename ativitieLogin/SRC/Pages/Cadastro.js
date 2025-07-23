@@ -1,40 +1,72 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View, TextInput, Image, TouchableOpacity } from "react-native";
+// import * as SQLite from "expo-sqlite"; // Comentado: relacionado ao banco de dados
+
 import { styles } from "../JS/styles";
+// Importando páginas
+import Login from "./Login";
 
-import CadastroScreen from "./Cadastro";
-import Home from "./Home";
+// --- INÍCIO: Código relacionado ao banco de dados ---
+// // Abrir o banco
+// const db = SQLite.openDatabase({
+//   name: "meuBancoDeDados.db",
+//   location: "default",
+// });
 
-export default function Login({ navigation }) {
+// // Criar a tabela uma vez
+// db.transaction((tx) => {
+//   tx.executeSql(
+//     "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)",
+//     [],
+//     () => {
+//       console.log("Tabela usuarios criada com sucesso");
+//     },
+//     (error) => {
+//       console.error("Erro ao criar tabela usuarios", error);
+//     }
+//   );
+// });
+// --- FIM: Código relacionado ao banco de dados ---
+
+export default function CadastroScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [errors, setErrors] = useState("");
-  const [emailValido, setEmailValido] = useState(false);
+  const [confirmarSenha, setConfirmarSenha] = useState("");
 
-  const modfText = (newText) => {
-    setEmail(newText);
+  // --- INÍCIO: Função relacionada ao banco de dados ---
+  // // Função para inserir usuário (agora dentro da tela, com acesso aos estados)
+  // const insertUser = () => {
+  //   db.transaction((tx) => {
+  //     tx.executeSql(
+  //       "INSERT INTO usuarios (email, password) VALUES (?, ?)",
+  //       [email, senha],
+  //       () => {
+  //         console.log("Usuário inserido com sucesso");
+  //         setEmail("");
+  //         setSenha("");
+  //         setConfirmarSenha("");
+  //       },
+  //       (error) => {
+  //         console.error("Erro ao inserir usuário", error);
+  //       }
+  //     );
+  //   });
+  // };
+  // --- FIM: Função relacionada ao banco de dados ---
 
-    setEmailValido(true);
-    setErrors("");
-    if (
-      newText.includes("@gmail" || "@outlook" || "@yahool") &&
-      newText.includes(".com")
-    ) {
-    } else {
-      setEmailValido(false);
-      setErrors("Email inválido");
-    }
-  };
   return (
     <View style={styles.container}>
+      {/* Cabeçalho */}
       <View style={styles.container1}>
         <Image
           style={styles.Image1}
           source={require("../IMG/56fdb3e8-a59d-4a5b-b75c-dbad4a2ada37.png")}
         />
-        <Text style={styles.title}>Bem-vindo(a)</Text>
+        <Text style={styles.title}>Cadastre-se</Text>
       </View>
+
+      {/* Formulário */}
       <View style={styles.container2}>
         <TextInput
           style={{
@@ -42,36 +74,46 @@ export default function Login({ navigation }) {
             width: 250,
             borderWidth: 1,
             position: "absolute",
-            top: 60,
+            top: 20,
             borderRadius: 10,
           }}
           value={email}
-          onChangeText={modfText}
-          returnKeyType="done"
+          onChangeText={setEmail}
           placeholder="Email"
           placeholderTextColor="#FFF"
-          color="#FFF"
         />
-        {errors ? (
-          <Text style={styles.error}>{errors}</Text> // Exiba aqui, fora do botão
-        ) : null}
+
         <TextInput
           style={{
             borderBottomColor: "#999",
             width: 250,
             borderWidth: 1,
             position: "absolute",
-            top: 160,
+            top: 100,
             borderRadius: 10,
           }}
           value={senha}
           onChangeText={setSenha}
-          secureTextEntry={true}
           placeholder="Senha"
           placeholderTextColor="#FFF"
-          color="#FFF"
         />
 
+        <TextInput
+          style={{
+            borderBottomColor: "#999",
+            width: 250,
+            borderWidth: 1,
+            position: "absolute",
+            top: 180,
+            borderRadius: 10,
+          }}
+          value={confirmarSenha}
+          onChangeText={setConfirmarSenha}
+          placeholder="Confirmar Senha"
+          placeholderTextColor="#FFF"
+        />
+
+        {/* Botão Enviar */}
         <TouchableOpacity
           style={{
             backgroundColor: "#c1e8ff",
@@ -84,16 +126,23 @@ export default function Login({ navigation }) {
             alignItems: "center",
           }}
           onPress={() => {
-            if (emailValido && senha) {
-              navigation.navigate("Home");
+            if (senha === confirmarSenha) {
+              // insertUser(); // Comentado: relacionado ao banco de dados
+              console.log("Usuário cadastrado com sucesso!");
+              navigation.navigate("Login");
             } else {
-              setErrors("Preencha todos os campos corretamente");
+              console.log(
+                "As senhas não coincidem. Por favor, tente novamente."
+              );
+              setSenha("");
+              setConfirmarSenha("");
             }
           }}
         >
-          {errors ? <Text style={styles.error}>{errors}</Text> : null}
           <Text style={{ fontSize: 20 }}>Enviar</Text>
         </TouchableOpacity>
+
+        {/* Link para Login */}
         <TouchableOpacity
           style={{
             backgroundColor: "transparent",
@@ -105,19 +154,12 @@ export default function Login({ navigation }) {
             justifyContent: "center",
             alignItems: "center",
           }}
-          onPress={() => {
-            navigation.navigate("Cadastro");
-          }}
+          onPress={() => navigation.goBack("Login")}
         >
-          <Text
-            style={{
-              fontSize: 20,
-              color: "blue",
-            }}
-          >
-            Ainda não tem uma conta?
-          </Text>
+          <Text style={{ fontSize: 20, color: "blue" }}>Já tem uma conta?</Text>
         </TouchableOpacity>
+
+        {/* Ícones de redes sociais */}
         <View
           style={{
             justifyContent: "space-between",
@@ -133,12 +175,14 @@ export default function Login({ navigation }) {
               source={require("../IMG/google.png")}
             />
           </TouchableOpacity>
+
           <TouchableOpacity>
             <Image
               style={{ width: 40, height: 40 }}
               source={require("../IMG/facebook.webp")}
             />
           </TouchableOpacity>
+
           <TouchableOpacity>
             <Image
               style={{ width: 40, height: 40, borderRadius: 10 }}
@@ -147,6 +191,7 @@ export default function Login({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
+
       <StatusBar hidden={true} />
     </View>
   );
