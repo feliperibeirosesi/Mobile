@@ -24,7 +24,7 @@ export default function Cadastro({ navigation }) {
 
   function passwordValue(value) {
     console.log(value);
-
+    //teste
     setPassword(value);
   }
 
