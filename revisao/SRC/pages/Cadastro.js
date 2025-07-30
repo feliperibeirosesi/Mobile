@@ -4,21 +4,30 @@ import { styles } from '../JS/style';
 import { BlurView } from 'expo-blur';
 import Feather from '@expo/vector-icons/Feather';
 import { useState } from 'react';
+import Input from '../Components/Input';
 
 export default function Cadastro({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function testFuncao(value) {
+  function nameValue(value) {
     console.log(value);
-
-    if (value != "") {
-      console.log("ESTOUAQUI!")
-    }
 
     setName(value);
   }
+  function emailValue(value) {
+    console.log(value);
+
+    setEmail(value);
+  }
+
+  function passwordValue(value) {
+    console.log(value);
+
+    setPassword(value);
+  }
+
   return (
     <ImageBackground
       style={styles.background}
@@ -35,25 +44,27 @@ export default function Cadastro({ navigation }) {
             </Text>
           </View>
           <View style={styles.inputsCadastro}>
-            <TextInput
-              style={styles.Input}
+            <Input
+              estilo={styles.Input}
               placeholder="Nome"
               placeholderTextColor={"#af99c4"}
-              value={name}
-              onChangeText={testFuncao} />
-            <TextInput
-              style={styles.Input}
+              valor={name}
+              funcao={nameValue} />
+            <Input
+              estilo={styles.Input}
               placeholder="Email"
               placeholderTextColor={"#af99c4"}
-              value={email}
-              onChangeText={setEmail} />
+              valor={email}
+              funcao={emailValue} />
 
-            <TextInput
-              style={styles.Input}
+            <Input
+              estilo={styles.Input}
               placeholder="Senha"
-              placeholderTextColor={"#af99c4"}
-              value={password}
-              onChangeText={setPassword} />
+              password={true}
+              valor={password}
+              funcao={passwordValue} />
+
+
 
           </View>
           <View style={styles.buttonCadastro}>
@@ -65,7 +76,9 @@ export default function Cadastro({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: 10
-              }}>
+
+              }}
+              onPress={() => { console.log() }}>
               <Text style={{ fontSize: 20 }}>Cadastro</Text>
             </TouchableOpacity>
           </View>
