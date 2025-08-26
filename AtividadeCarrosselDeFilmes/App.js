@@ -1,13 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { LoginStyles } from './SRC/Style/LoginStyle';
+import { NavigationContainer } from "@react-navigation/native";
+import createNativeStackNavigator from "@react-navigation/native-stack";
+
+import Home from "./screens/Home";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={LoginStyles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.navigation screenOptions={{ Headershow: false }}>
+        <Stack.screen name="Home" components={Home} />
+      </Stack.navigation>
+    </NavigationContainer>
   );
 }
-
