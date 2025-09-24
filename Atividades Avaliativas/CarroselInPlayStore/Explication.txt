@@ -1,0 +1,16 @@
+Vou explicar minha ideia de como vai ficar o site, para que não fique de qualquer jeito.
+
+////////////////////////////////////////////////////Ideias////////////////////////////////////////////////////////////////////////
+1. Primeiramente ao entrar no app poderia ter duas tela de onboarding, uma para introdução e outra para login,
+que só seria possivel passar para a home assim que os dados da pessoa fossem colocados.
+
+2. Na tela de HOME, terá que ter o que se pede na atividade proposta, um botão de sair (que ao sair deslogue), uma area
+que identifique se a pessoa está conectada, tudo isso pode ser achada na atividade "✏️ S3_AT1_R3_PPDM", porém um adicional
+seria colocar o nome da pessoa ao entrar.
+
+//////////////////////////////////////////////////Bibliotecas//////////////////////////////////////////////////////////////////
+• Onboarding;
+• Lottie;
+• Async-Storage;
+• native-stack;
+
