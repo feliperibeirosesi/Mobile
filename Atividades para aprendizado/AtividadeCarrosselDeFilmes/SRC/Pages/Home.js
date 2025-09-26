@@ -8,6 +8,7 @@ import { removeName } from "../Components/AsyncStorage";
 import Carrosel from "./Carrosel";
 
 export default function Home({ navigation }) {
+
   return (
     <View style={HomeStyle.container}>
 
